@@ -1,0 +1,76 @@
+<script>
+    $(document).ready(function() {
+        $("#ddlUserProfile").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlRole").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlUserProfileSearch").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlRoleSearch").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlUserProfileSearch").change(function() {
+            user_permission.SearchUserRoleAssign($('#ddlUserProfileSearch option:selected').val(), $('#ddlRoleSearch option:selected').val(), 1, $('#ddlRowsPerPage option:selected').val());
+        });
+        $("#ddlRoleSearch").change(function() {
+            user_permission.SearchUserRoleAssign($('#ddlUserProfileSearch option:selected').val(), $('#ddlRoleSearch option:selected').val(), 1, $('#ddlRowsPerPage option:selected').val());
+        });
+        transaction.LoadddlRowsPerPage();
+        user_permission.LoadddlUserProfile();
+        user_permission.LoadddlRole();
+        $('#ddlUserProfileSearch').val(0).trigger('change.select2');
+        $('#ddlRoleSearch').val(0).trigger('change.select2');
+        user_permission.SearchUserRoleAssign($('#ddlUserProfileSearch option:selected').val(), $('#ddlRoleSearch option:selected').val(), 1, $('#ddlRowsPerPage option:selected').val());
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-6">
+        <fieldset class="border p-2">
+            <legend class="w-auto">Role Assign</legend>
+            <div class="row">
+                <label style="width:40%">User:</label>
+                <select id="ddlUserProfile" style="width:60%"></select>
+            </div>
+            <div class="row">
+                <label style="width:40%">Role:</label>
+                <select id="ddlRole" style="width:60%"></select>
+            </div>
+            <div class="row">
+                <div style="width:70%"></div>
+                <button id="btnSaveRoleAssign" class="btn btn-success" style="width:30%" onclick="user_permission.SaveUserRoleAssign($('#ddlUserProfile option:selected').val(), $('#ddlRole option:selected').val())">Add</button>
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <fieldset class="border p-2">
+            <legend class="w-auto">List</legend>
+            <div class="row">
+                <label style="width:15%">User:</label>
+                <select id="ddlUserProfileSearch" style="width:30%"></select>
+                <div style="width:10%"></div>
+                <label style="width:15%">Role:</label>
+                <select id="ddlRoleSearch" style="width:30%"></select>
+            </div>
+            <div class="row">
+                <div style="width:92%"></div>
+                <button id="btnSearchRoleAssign" class="btn btn-success" style="width:8%" onclick="user_permission.SearchUserRoleAssign($('#ddlUserProfileSearch option:selected').val(), $('#ddlRoleSearch option:selected').val(), 1, $('#ddlRowsPerPage option:selected').val())">Search</button>
+            </div>
+        </fieldset>
+        <div class="row">
+            <label style="width:15%">Rows Per Page:</label>
+            <select id="ddlRowsPerPage" style="width:10%"></select>
+            <div style="width:67%"></div>
+            <button id="btnExport" class="btn btn-info" style="width:8%" onclick="utility.exportTableToExcel('tbl_list', 'List')">Export</button>
+        </div>
+        <div class="row">
+            <div id="div_list" style="width:100%"></div>
+        </div>
+    </div>
+</div>

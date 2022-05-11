@@ -1,0 +1,29 @@
+div.gallery {
+    margin: 1%;
+    border: 1px solid #ccc;
+    float: left;
+    height: fit-content;
+}
+
+div.gallery:hover {
+    border: 1% solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: 60%;
+}
+
+div.description {
+    padding: 1%;
+    text-align: center;
+    width: 100%;
+    height: 30%;
+}
+
+div.button {
+    padding: 1%;
+    text-align: center;
+    width: 100%;
+    height: 10%;
+}

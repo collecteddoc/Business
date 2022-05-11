@@ -1,0 +1,47 @@
+<script>
+    $(document).ready(function() {
+        $("#dtpFromDate").datepicker();
+        $("#dtpFromDate").datepicker("setDate", new Date((new Date().getFullYear()), (new Date().getMonth() - 1), 25));
+        $("#dtpToDate").datepicker();
+        $("#dtpToDate").datepicker("setDate", new Date());
+        $("#ddlBranch").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlRowsPerPage").change(function() {
+            voucher.Search($('#dtpFromDate').val(), $('#dtpToDate').val(), $('#ddlBranch option:selected').val(), 1, $('#ddlRowsPerPage option:selected').val());
+        });
+        transaction.LoadddlRowsPerPage();
+        transaction.LoadddlAllBranch();
+        voucher.Search($('#dtpFromDate').val(), $('#dtpToDate').val(), $('#ddlBranch option:selected').val(), 1, $('#ddlRowsPerPage option:selected').val());
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <fieldset class="border p-2">
+            <legend class="w-auto">Voucher List</legend>
+            <div class="row">
+                <label style="width:15%">From Date:</label>
+                <input type="text" id="dtpFromDate" style="width:30%">
+                <div style="width:10%"></div>
+                <label style="width:15%">To Date:</label>
+                <input type="text" id="dtpToDate" style="width:30%">
+            </div>
+            <div class="row">
+                <label style="width:15%">Branch:</label>
+                <select id="ddlBranch" style="width:30%"></select>
+                <div style="width:47%"></div>
+                <button id="btnSearch" class="btn btn-success" style="width:8%" onclick="voucher.Search($('#dtpFromDate').val(), $('#dtpToDate').val(), $('#ddlBranch option:selected').val(), 1, $('#ddlRowsPerPage option:selected').val())">Search</button>
+            </div>
+        </fieldset>
+        <div class="row">
+            <label style="width:15%">Rows Per Page:</label>
+            <select id="ddlRowsPerPage" style="width:10%"></select>
+            <div style="width:67%"></div>
+            <button id="btnExport" class="btn btn-info" style="width:8%" onclick="utility.exportTableToExcel('tbl_list', 'Voucher List')">Export</button>
+        </div>
+        <div class="row">
+            <div id="div_list" style="width:100%"></div>
+        </div>
+    </div>
+</div>

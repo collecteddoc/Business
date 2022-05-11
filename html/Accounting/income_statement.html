@@ -1,0 +1,52 @@
+<script>
+    $(document).ready(function() {
+        $("#dtpFromDate").datepicker();
+        $("#dtpFromDate").datepicker("setDate", new Date((new Date().getFullYear()), (new Date().getMonth() - 1), 25));
+        $("#dtpToDate").datepicker();
+        $("#dtpToDate").datepicker("setDate", new Date());
+        $("#ddlBranch").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlCurrency").select2({
+            matcher: utility.matchCustom,
+        });
+        transaction.LoadddlAllBranch();
+        transaction.LoadddlCurrency();
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <fieldset class="border p-2">
+            <legend class="w-auto">Income Statement</legend>
+
+            <div class="row">
+                <label style="width:15%">From Date:</label>
+                <input type="text" id="dtpFromDate" style="width:30%">
+                <div style="width:10%"></div>
+                <label style="width:15%">To Date:</label>
+                <input type="text" id="dtpToDate" style="width:30%">
+            </div>
+
+            <div class="row">
+                <label style="width:15%">Branch:</label>
+                <select id="ddlBranch" style="width:30%"></select>
+                <div style="width:10%"></div>
+                <label style="width:15%">Currency:</label>
+                <select id="ddlCurrency" style="width:30%"></select>
+            </div>
+
+            <div class="row">
+                <button id="btnLoadCurrency" class="btn btn-success" style="width:20%" onclick="main.getCurrency();">Load Currency</button>
+                <div style="width:62%"></div>
+                <button id="btnShowIncomeStatement" class="btn btn-success" style="width:8%" onclick="income_statement.GetIncomeStatement()">Show</button>
+                <div style="width:2%"></div>
+                <button id="btnExportIncomeStatement" class="btn btn-info" style="width:8%" onclick="utility.exportTableToExcel('tbl_income_statement', 'Income Statement')">Export</button>
+            </div>
+
+            <div class="row">
+                <div id="div_income_statement" class="col-md-12"></div>
+            </div>
+        </fieldset>
+    </div>
+</div>

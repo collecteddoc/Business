@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="/css/robot.css">
+
+<script>
+    $(document).ready(function() {
+        setInterval(function() {
+            if (document.getElementById('chkIsSpeak') != null) {
+                if (document.getElementById('chkIsSpeak').checked) {
+                    robot.getMessage();
+                }
+            }
+        }, 10000);
+
+        // Press Enter button to send message.
+        var input = document.getElementById("txtMessage");
+        if (input != null) {
+            input.addEventListener("keyup", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    document.getElementById("btnSendMessage").click();
+                }
+            });
+        }
+    });
+</script>
+
+<div class="row">
+    <div class="mike">
+        <div class="head">
+            <div class="eyes">
+                <div class="eye">
+                    <div class="pupil"></div>
+                </div>
+                <div class="eye">
+                    <div class="pupil"></div>
+                </div>
+            </div>
+            <div class="nose">
+                <div class="ball"></div>
+                <div class="ball"></div>
+            </div>
+            <div class="mouth"></div>
+            </br>
+            </br>
+            </br>
+            </br>
+            <!-- <div class="text-center">
+                <button id="btnSpeak" class="btn btn-success" onclick="robot.getMessage()">Speak</button>
+            </div> -->
+            <div class="row">
+                <div class="text-center">
+                    <input type="checkbox" id="chkIsSpeak"> &nbsp;
+                    <label>Activate Robot</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

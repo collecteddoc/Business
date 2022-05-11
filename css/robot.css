@@ -1,0 +1,132 @@
+div {
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+  
+  .mike {
+    width: 800px;
+    margin: 0 auto;
+    padding-top: 8%;
+    transition: all 1s;
+  }
+  
+  .head {
+    width: 390px;
+    height: 240px;
+    background: #92ae57;
+    position: relative;
+    z-index: 1;
+    margin-left: 103px;
+  }
+  
+  .eyes {
+    width:400px;
+    position: absolute;
+    bottom: 90px;
+  }
+  
+  .eye {
+    width: 190px;
+    height: 186px;
+    background-color: #ffe13b;
+    border: 10px solid #92ae57;
+    display: inline-block;
+    z-index: 2;
+    animation: eyes 2s infinite step-start 0s;
+  }
+  
+  .eye:last-child {
+    float:right;
+  }
+  
+  .pupil {
+    width: 1px;
+    height: 1px;
+    border: 10px solid #353535;
+    display: inline-block;
+    position: absolute;
+    top: 76px;
+    margin-left:73px;  
+    z-index: 3;
+    animation: pupil 5s infinite step-start 0s;
+  }
+  
+  .pupil:last-child{
+    float:right;
+  }
+  
+  .ball {
+    width: 1px;
+    height: 1px;
+    border: 5px solid #6f8346;
+    position: absolute;
+    top: 140px;
+    left: 176px;
+  }
+  
+  .ball:last-child {
+    float:left;
+    margin-left: 14px;
+  }
+  
+  .mouth {
+    height: 200px;
+    width: 360px;
+    border-bottom: 4px solid #6f8346;
+    position: relative;
+    top: 8px;
+    left: 7px;
+  }
+  
+  /* Animations */
+  
+  @keyframes eyes {
+     0%, 100% {
+      background: #92ae57;
+      border-radius: 50%;
+      border: 10px solid #92ae57;
+    } 
+  
+     5%, 95% {  
+      background:#ffe13b;
+      border-radius: 50%;
+      border: 10px solid #92ae57;
+    }
+  }
+  
+  @keyframes pupil {
+    0%, 100% {
+      opacity: 0;
+    }
+    5%, 95% {
+      opacity: 1;
+   }
+  }
+  
+  @keyframes eyes {
+    0%, 100% {
+      background: #92ae57;
+      border-radius: 50%;
+      border: 10px solid #92ae57;
+    } 
+  
+    5%, 95% {
+      background: #ffe13b;
+      border-radius: 50%;
+      border: 10px solid #92ae57;
+     }
+  }
+  
+  @keyframes pupil {
+    0%, 100% {
+      opacity: 0;
+    }
+    5%, 95% {
+      opacity: 1;
+   }
+  }
+  
+  
+  .mike{
+    transition: all 1s;
+  }

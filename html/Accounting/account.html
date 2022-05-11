@@ -1,0 +1,90 @@
+<script>
+    $(document).ready(function () {
+        $('#txtId').val(0);
+        $("#ddlAccountType").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlSearchAccountType").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlBranch").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlBranchSearch").select2({
+            matcher: utility.matchCustom,
+        });
+        $('#chkIsActive').prop("checked", true);
+        $('#chkSearchIsActive').prop("checked", true);        
+        account.LoadddlRowsPerPage();
+        transaction.LoadddlAllBranch();
+        account.LoadddlAccountType(0, $('#ddlBranch option:selected').val());
+        $('#ddlSearchAccountType').val(0).trigger('change.select2');
+        account.Search($('#txtSearchName').val(), $('#ddlBranchSearch option:selected').val(), $('#ddlSearchAccountType option:selected').val(), document.getElementById('chkSearchIsActive').checked, 1, $('#ddlRowsPerPage option:selected').val());
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-6">
+        <fieldset class="border p-2">
+            <legend class="w-auto">Account</legend>
+            <div class="row">
+                <input type="hidden" id="txtId" style="width:100%">
+            </div>
+            <div class="row">
+                <label style="width:40%">Branch:</label>
+                <select id="ddlBranch" style="width:60%"></select>
+            </div>
+            <div class="row">
+                <label style="width:40%">Account Type:</label>
+                <select id="ddlAccountType" style="width:60%"></select>
+            </div>
+            <div class="row">
+                <label style="width:40%">Name:</label>
+                <input type="text" id="txtName" style="width:60%" maxlength="100">
+            </div>
+            <div class="row">
+                <div style="width:70%">
+                    <input type="checkbox" id="chkIsActive"> &nbsp;
+                    <label>Is Active:</label>
+                </div>
+                <button id="btnSave" class="btn btn-success" style="width:30%"
+                    onclick="account.Save($('#txtId').val(), $('#ddlBranch option:selected').val(), $('#txtName').val(), $('#ddlAccountType option:selected').val(), document.getElementById('chkIsActive').checked)">Save</button>
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <fieldset class="border p-2">
+            <legend class="w-auto">Account List</legend>
+            <div class="row">
+                <label style="width:10%">Name:</label>
+                <input type="text" id="txtSearchName" style="width:20%">
+                <div style="width:5%"></div>
+                <label style="width:10%">Account Type:</label>
+                <select id="ddlSearchAccountType" style="width:20%"></select>
+                <div style="width:5%"></div>
+                <label style="width:10%">Branch:</label>
+                <select id="ddlBranchSearch" style="width:20%"></select>
+            </div>
+            <div class="row">
+                <input type="checkbox" id="chkSearchIsActive"> 
+                <label style="width:10%">Is Active</label>
+                <div style="width:80%"></div>
+                <button id="btnSearch" class="btn btn-success" style="width:8%"
+                    onclick="account.Search($('#txtSearchName').val(), $('#ddlBranchSearch option:selected').val(), $('#ddlSearchAccountType option:selected').val(), document.getElementById('chkSearchIsActive').checked, 1, $('#ddlRowsPerPage option:selected').val())">Search</button>
+            </div>
+        </fieldset>
+        <div class="row">
+            <label style="width:15%">Rows Per Page:</label>
+            <select id="ddlRowsPerPage" style="width:10%"></select>
+            <div style="width:67%"></div>
+            <button id="btnExport" class="btn btn-info" style="width:8%"
+                onclick="utility.exportTableToExcel('tbl_list', 'Account List')">Export</button>
+        </div>
+        <div class="row">
+            <div id="div_list" style="width:100%"></div>
+        </div>
+    </div>
+</div>

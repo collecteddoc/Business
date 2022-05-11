@@ -1,0 +1,137 @@
+<script>
+    $(document).ready(function() {
+        $('#txtTransactionId').val(0);
+        $('#txtEventId').val(4);
+        $("#dtpFromDate").datepicker();
+        $("#dtpFromDate").datepicker("setDate", new Date());
+        $("#dtpToDate").datepicker();
+        $("#dtpToDate").datepicker("setDate", new Date());
+        $("#txtAmount").numeric({});
+        $("#dtpTransactionDate").datepicker();
+        $("#dtpTransactionDate").datepicker("setDate", new Date());
+        $("#ddlBranch").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlAccount").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlTransactionType").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlProcessType").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlBranchSearch").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlAccountType").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlAccountSearch").select2({
+            matcher: utility.matchCustom,
+        });
+        $("#ddlBranch").change(function() {
+            transaction.LoadddlAccount($('#txtEventId').val(), $('#ddlBranch option:selected').val());
+        });
+        $("#ddlAccount").change(function() {
+            transaction.LoadddlTransactionType($('#txtEventId').val(), $('#ddlAccount option:selected').val());
+        });
+        $("#ddlTransactionType").change(function() {
+            transaction.LoadddlProcessType($('#txtEventId').val(), $('#ddlAccount option:selected').val(), $('#ddlTransactionType option:selected').val());
+        });
+        $("#ddlBranchSearch").change(function() {
+            transaction.LoadddlAccountType($('#txtEventId').val(), $('#ddlBranchSearch option:selected').val());
+        });
+        $("#ddlAccountType").change(function() {
+            transaction.LoadddlAccountSearch($('#txtEventId').val(), $('#ddlBranchSearch option:selected').val(), $('#ddlAccountType option:selected').val());
+        });
+        transaction.LoadddlRowsPerPage();
+        transaction.LoadddlBranch();
+        $('#ddlAccountType').val(0).trigger('change.select2');
+        $('#ddlAccountSearch').val(0).trigger('change.select2');
+        transaction.LoadddlAccount($('#txtEventId').val(), $('#ddlBranch option:selected').val());
+        transaction.LoadddlAccountType($('#txtEventId').val(), $('#ddlBranchSearch option:selected').val());
+        transaction.Search($('#dtpFromDate').val(), $('#dtpToDate').val(), $('#txtEventId').val(), $('#ddlBranchSearch option:selected').val(), $('#ddlAccountType option:selected').val(), $('#ddlAccountSearch option:selected').val(), 1, $('#ddlRowsPerPage option:selected').val());
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-6">
+        <fieldset class="border p-2">
+            <legend class="w-auto">Expenses</legend>
+            <div class="row">
+                <input type="hidden" id="txtTransactionId" style="width:30%">
+                <input type="hidden" id="txtEventId" style="width:40%">
+            </div>
+            <div class="row">
+                <label style="width:40%">Transaction Date:</label>
+                <input type="text" id="dtpTransactionDate" style="width:60%" placeholder="Please enter transaction date.">
+            </div>
+            <div class="row">
+                <label style="width:40%">Branch:</label>
+                <select id="ddlBranch" style="width:60%"></select>
+            </div>
+            <div class="row">
+                <label style="width:40%">Account:</label>
+                <select id="ddlAccount" style="width:60%"></select>
+            </div>
+            <div class="row">
+                <label style="width:40%">Transaction:</label>
+                <select id="ddlTransactionType" style="width:60%"></select>
+            </div>
+            <div class="row">
+                <label style="width:40%">Process:</label>
+                <select id="ddlProcessType" style="width:60%"></select>
+            </div>
+            <div class="row">
+                <label style="width:40%">Amount:</label>
+                <input type="text" id="txtAmount" style="width:60%" placeholder="Please enter amount." maxlength="10">
+            </div>
+            <div class="row">
+                <label style="width:40%">Remarks:</label>
+                <textarea id="txtRemarks" rows="4" cols="40" style="width:60%" placeholder="Please enter remarks." maxlength="200"></textarea>
+            </div>
+            <div class="row">
+                <div style="width:70%"></div>
+                <button id="btnSave" class="btn btn-success" style="width:30%" onclick="transaction.Save($('#txtTransactionId').val(), $('#ddlBranch option:selected').val(), $('#dtpTransactionDate').val(), $('#txtEventId').val(), $('#ddlAccount option:selected').val(),  $('#ddlTransactionType option:selected').val(),  $('#ddlProcessType option:selected').val(), $('#txtAmount').val(), $('#txtRemarks').val())">Save</button>
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <fieldset class="border p-2">
+            <legend class="w-auto">Transaction List</legend>
+            <div class="row">
+                <label style="width:15%">From Date:</label>
+                <input type="text" id="dtpFromDate" style="width:30%">
+                <div style="width:10%"></div>
+                <label style="width:15%">To Date:</label>
+                <input type="text" id="dtpToDate" style="width:30%">
+            </div>
+            <div class="row">
+                <label style="width:15%">Branch:</label>
+                <select id="ddlBranchSearch" style="width:30%"></select>
+                <div style="width:10%"></div>
+                <label style="width:15%">Account Type:</label>
+                <select id="ddlAccountType" style="width:30%"></select>
+            </div>
+            <div class="row">
+                <label style="width:15%">Account:</label>
+                <select id="ddlAccountSearch" style="width:30%"></select>
+                <div style="width:47%"></div>
+                <button id="btnSearch" class="btn btn-success" style="width:8%" onclick="transaction.Search($('#dtpFromDate').val(),$('#dtpToDate').val(), $('#txtEventId').val(), $('#ddlBranchSearch option:selected').val(), $('#ddlAccountType option:selected').val(), $('#ddlAccountSearch option:selected').val(), 1, $('#ddlRowsPerPage option:selected').val())">Search</button>
+            </div>
+        </fieldset>
+        <div class="row">
+            <label style="width:15%">Rows Per Page:</label>
+            <select id="ddlRowsPerPage" style="width:10%"></select>
+            <div style="width:67%"></div>
+            <button id="btnExport" class="btn btn-info" style="width:8%" onclick="utility.exportTableToExcel('tbl_list', 'Transaction List')">Export</button>
+        </div>
+        <div class="row">
+            <div id="div_list" style="width:100%"></div>
+        </div>
+    </div>
+</div>

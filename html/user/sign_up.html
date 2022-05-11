@@ -1,0 +1,33 @@
+<div class=" row" style="padding: 10%;">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <fieldset class="border p-2">
+            <legend class="w-auto">Sign up</legend>
+
+            <div class="row">
+                <input id="txtEmail" class="col-md-12" type="text" placeholder="Please enter Email">
+            </div>
+
+            <div class="row">
+                <input id="txtPassword" class="col-md-12" type="password" placeholder="Please enter password">
+            </div>
+
+            <div class="row">
+                <input id="txtConfirmPassword" class="col-md-12" type="password"
+                    placeholder="Please enter confirm password">
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" align="center">
+                    <button id="btnBack" class="btn btn-primary col-md-3 float-left"
+                        onclick="$('#div_menu').hide();main.loadpage('/index.html')">Back</button>
+                    <button id="btnSignup" class="btn btn-success col-md-3 float-right"
+                        onclick="sign_up.signup($('#txtEmail').val(), $('#txtPassword').val(), $('#txtConfirmPassword').val())">Sign
+                        up</button>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-md-6"></div>
+    <div id="footer" class="col-md-12" style="border: solid 0px;">Copyright @2020</div>
+</div>

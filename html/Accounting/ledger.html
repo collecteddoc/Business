@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Application</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/common/jquery-3.4.1.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/accounting/ledger.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.getScript("/js/main.js", function () {
+                main.includeScriptFiles();
+                main.load();
+                $.getScript("/js/utility/utility.js", function () {
+                    var fromDate = utility.getUrlQueryString('fromDate');
+                    var toDate = utility.getUrlQueryString('toDate');
+                    var accountHeadId = utility.getUrlQueryString('accountHeadId');
+                    var branchId = utility.getUrlQueryString('branchId');
+                    var currency = utility.getUrlQueryString('currency');
+                    ledger.GetLedger(fromDate, toDate, accountHeadId, branchId, currency);
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset class="border p-2">
+                <legend class="w-auto">Ledger</legend>
+                <div class="row">
+                    <button id="btnExportLedger" class="btn btn-info col-md-1"
+                        onclick="utility.exportTableToExcel('tbl_ledger', 'Ledger')">Export</button>
+                    <div id="div_ledger" class="col-md-12"></div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<div class=" row" style="padding: 10%;">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <fieldset class="border p-2">
+            <legend class="w-auto">Sign in</legend>
+
+            <div class="row">
+                <input id="txtEmail" class="col-md-12" type="text" placeholder="Please enter email">
+            </div>
+
+            <div class="row">
+                <input id="txtPassword" class="col-md-12" type="password" placeholder="Please enter password">
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" align="center">
+                    <button id="btnSignin" class="btn btn-success col-md-12"
+                        onclick="sign_in.signin($('#txtEmail').val(), $('#txtPassword').val())">Sign in</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6" style="text-decoration: underline; color: blue;" align="left"><button
+                        id="btnBack" class="btn btn-primary" onclick="$('#div_menu').hide();main.loadpage('/index.html')">Back</button>
+                </div>
+                <div class="col-md-6" style="text-decoration: underline; color: blue;" align="right"><button
+                        id="lblSignUp" class="btn btn-info"
+                        onclick="$('#div_menu').hide();main.loadpage('/html/user/sign_up.html')"><b>Sign up</b></button>
+                </div>
+                <div class="col-md-6" style="text-decoration: underline; color: blue;" align="left"><label
+                        id="lblForgotPassword"
+                        onclick="$('#div_menu').hide();main.loadpage('/html/user/forgot_password.html')">Forgot
+                        password?</label></div>
+            </div>
+
+        </fieldset>
+    </div>
+    <div class="col-md-3"></div>
+</div>

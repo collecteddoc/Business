@@ -1,0 +1,24 @@
+<script>
+    $(document).ready(function () {
+        journal_mapping.GetJournalMapping();
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <fieldset class="border p-2">
+            <legend class="w-auto">Journal Mapping</legend>
+
+            <div class="row">
+                <button id="btnShowJournalMapping" class="btn btn-success col-md-2"
+                    onclick="journal_mapping.GetJournalMapping()">Show</button> &nbsp;
+                <button id="btnExportJournalMapping" class="btn btn-info col-md-2"
+                    onclick="utility.exportTableToExcel('tbl_journal_mapping', 'Journal Mapping')">Export</button>
+            </div>
+
+            <div class="row">
+                <div id="div_journal_mapping" class="col-md-12"></div>
+            </div>
+        </fieldset>
+    </div>
+</div>
