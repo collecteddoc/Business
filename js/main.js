@@ -7,43 +7,43 @@ var main = {
     loaderAnimation: '<img src="/content/loader.gif" /> <br/> Just a moment',
 
     includeScriptFiles: function() {
-        main.include('/js/common//bootstrap.min.js');
-        main.include('/js/common/sweetalert.min.js');
-        main.include('/js/common/jquery.blockUI.js');
-        main.include('/js/common/jquery.alphanum.js');
-        main.include('/js/common/jquery.dataTables.min.js');
-        main.include('/js/common/print.min.js');
-        main.include('/js/common/jquery-ui.js');
-        main.include('/js/common/select2.min.js');
-        main.include('/js/common/JsBarcode.all.min.js'); // https://lindell.me/JsBarcode/
+        main.include('../js/common//bootstrap.min.js');
+        main.include('../js/common/sweetalert.min.js');
+        main.include('../js/common/jquery.blockUI.js');
+        main.include('../js/common/jquery.alphanum.js');
+        main.include('../js/common/jquery.dataTables.min.js');
+        main.include('../js/common/print.min.js');
+        main.include('../js/common/jquery-ui.js');
+        main.include('../js/common/select2.min.js');
+        main.include('../js/common/JsBarcode.all.min.js'); // https://lindell.me/JsBarcode/
 
-        main.include('/js/utility/utility.js');
-        main.include('/js/user/change_password.js');
-        main.include('/js/user/sign_in.js');
-        main.include('/js/user/sign_up.js');
+        main.include('../js/utility/utility.js');
+        main.include('../js/user/change_password.js');
+        main.include('../js/user/sign_in.js');
+        main.include('../js/user/sign_up.js');
 
-        main.include('/js/robot/robot.js');
+        main.include('../js/robot/robot.js');
 
-        main.include('/js/accounting/balance_sheet.js');
-        main.include('/js/accounting/chart_of_accounts.js');
-        main.include('/js/accounting/ledger.js');
-        main.include('/js/accounting/process_journal.js');
-        main.include('/js/accounting/income_statement.js');
-        main.include('/js/accounting/profit_statement.js');
-        main.include('/js/accounting/cash_flow_statement.js');
-        main.include('/js/accounting/stakeholders_equity_statement.js');
-        main.include('/js/accounting/cash_book.js');
-        main.include('/js/accounting/journal_mapping.js');
-        main.include('/js/accounting/transaction.js');
-        main.include('/js/accounting/voucher.js');
-        main.include('/js/accounting/account.js');
+        main.include('../js/accounting/balance_sheet.js');
+        main.include('../js/accounting/chart_of_accounts.js');
+        main.include('../js/accounting/ledger.js');
+        main.include('../js/accounting/process_journal.js');
+        main.include('../js/accounting/income_statement.js');
+        main.include('../js/accounting/profit_statement.js');
+        main.include('../js/accounting/cash_flow_statement.js');
+        main.include('../js/accounting/stakeholders_equity_statement.js');
+        main.include('../js/accounting/cash_book.js');
+        main.include('../js/accounting/journal_mapping.js');
+        main.include('../js/accounting/transaction.js');
+        main.include('../js/accounting/voucher.js');
+        main.include('../js/accounting/account.js');
 
-        main.include('/js/prizebond/prizebond.js');
+        main.include('../js/prizebond/prizebond.js');
 
-        main.include('/js/user_permission/user_permission.js');
+        main.include('../js/user_permission/user_permission.js');
 
-        main.include('/js/inventory/pos.js');
-        main.include('/js/server/server.js');
+        main.include('../js/inventory/pos.js');
+        main.include('../js/server/server.js');
     },
 
     load: function() {

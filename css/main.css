@@ -1,9 +1,9 @@
-@import "/css/bootstrap.min.css";
-@import "/css/menu_tree.css";
-@import "/css/galary.css";
-@import "/css/jquery.dataTables.min.css";
-@import "/css/jquery-ui.css";
-@import "/css/select2.min.css";
+@import "../css/bootstrap.min.css";
+@import "../css/menu_tree.css";
+@import "../css/galary.css";
+@import "../css/jquery.dataTables.min.css";
+@import "../css/jquery-ui.css";
+@import "../css/select2.min.css";
 
 /* @import "/css/to_do.css"; */
 
